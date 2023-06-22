@@ -9,6 +9,12 @@ import os
 import pandas as pd
 os.chdir(os.path.dirname(os.path.abspath(__file__))) 
 
+def tipo_canto(canto):
+    if(isinstance(canto,str)):
+        return int(canto.split('-')[0].strip())
+    else:
+        return ''
+
 def convert_files(file,iDir,oDir):
     try:
         # Read
@@ -32,12 +38,7 @@ def convert_files(file,iDir,oDir):
         df[cols] = df[cols].round(0)
         
         # Mantener solo numero de canto
-        
-        def tipo_canto(canto):
-            if(isinstance(canto,str)):
-                return canto.split('-')[0].strip()
-            else:
-                return ''
+
         
         df['_top_'] = df['_top_'].apply(lambda x: tipo_canto(x))
         df['_right_'] = df['_right_'].apply(lambda x: tipo_canto(x))
@@ -59,10 +60,13 @@ def convert_files(file,iDir,oDir):
         
         df.to_excel(f'{oDir}/{file}',index=False)
         
+        
+        
         print(f'{file} se ha convertido exitosamente')
+        return df
     except Exception as e:
         print(f'{file} tiene un problema')
-        print(type(e).__name__)
+        print(type(e).__name__, e)
 
 inputDir = './inputs/'
 outputDir = './outputs'
@@ -88,6 +92,7 @@ if(not(files)):
 else:
     for file in files:
         print(f'Intentando convertir {file}')
-        convert_files(file,inputDir,outputDir)
+        df = convert_files(file,inputDir,outputDir)
+        
 
 
