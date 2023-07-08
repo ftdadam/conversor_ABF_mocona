@@ -51,7 +51,7 @@ def convert_files(file,iDir,oDir):
         df.rename(columns=rename_dict,inplace=True)
         
         cols_order = ['TIPO DE PLACA','LARGO','ANCHO','OBSERVACION',
-                      'LARGO SUPERIOR','ANCHO DERECHO','LARGO INFERIOR','ANCHO IZQUIERDO']
+                      'LARGO SUPERIOR','LARGO INFERIOR','ANCHO DERECHO','ANCHO IZQUIERDO']
         
         df = df[cols_order]
         
@@ -63,7 +63,7 @@ def convert_files(file,iDir,oDir):
         
         
         print(f'{file} se ha convertido exitosamente')
-        return df
+        #return df
     except Exception as e:
         print(f'{file} tiene un problema')
         print(type(e).__name__, e)
@@ -92,7 +92,8 @@ if(not(files)):
 else:
     for file in files:
         print(f'Intentando convertir {file}')
-        df = convert_files(file,inputDir,outputDir)
+        #df = convert_files(file,inputDir,outputDir)
+        convert_files(file,inputDir,outputDir)
         
 
 
