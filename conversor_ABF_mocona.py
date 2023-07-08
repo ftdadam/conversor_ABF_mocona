@@ -130,8 +130,8 @@ if(__name__=='__main__'):
               )
         
         valid_options = ['0','1','2']
-        proc_type = '2'
-        #proc_type = input('Ingrese una opción: ')
+        
+        proc_type = input('Ingrese una opción: ')
         while(proc_type not in valid_options):
             proc_type = input('Ingrese una opción válida: ')
             
