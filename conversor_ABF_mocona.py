@@ -2,7 +2,7 @@
 """
 
 @author: fdadam
-conversor_ABF_mocona_v.0.1
+conversor_ABF_mocona_v.0.2
 """
 
 import os
@@ -18,9 +18,26 @@ def tipo_canto(canto):
 def convertDf(df_og):
     
     df = df_og.copy()
-    # Drop
+    
+    # Switch LARGO y ANCHO if grain==N
+    
+    largo_aux = df['cutting-length'].copy().values
+    ancho_aux = df['cutting-width'].copy().values
+    
+    for ptr in df.index:
+        if( (df['grain'][ptr] == 'N') or (df['grain'][ptr] == 0)):
+            largo_aux[ptr] = df['cutting-width'].copy().values[ptr]
+            ancho_aux[ptr] = df['cutting-length'].copy().values[ptr]
+            
+            
+    df['cutting-length'] = largo_aux
+    df['cutting-width'] = ancho_aux
+    
+    # Drop Columns
     cols_to_keep = ['cutting-length','cutting-width','material','label',
                     '_top_','_right_','_bot_','_left_']
+    
+    
     
     cols_new_names = ['LARGO','ANCHO','TIPO DE PLACA','OBSERVACION',
                       'LARGO SUPERIOR','ANCHO DERECHO','LARGO INFERIOR','ANCHO IZQUIERDO']
@@ -50,8 +67,14 @@ def convertDf(df_og):
     
     df = df[cols_order]
     
+    # Insert column CANTIDAD (Value 1 in every row)
     df.insert(1,'CANTIDAD',value=[1]*len(df))
+    
+    # Insert Column VETA (empty - mocona requirement)
     df.insert(5,'VETA',value=['']*len(df))
+    
+    
+    
     
     return df
     
