@@ -22,4 +22,4 @@
     - Agregado gestión de carpetas
     - Agregado posibilidad de convertir archivos por separado o en lote
 - v0.2
-    - Agregado intercambiar cutting lenght y cutting width cuando no coincide la veta (grain == N)
+    - Agregado intercambiar cutting length y cutting width cuando no coincide la veta (grain == N)
