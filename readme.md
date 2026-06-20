@@ -1,25 +1,20 @@
-# Instrucciones de instalación
-
-1. Instalar Python desde la Microsoft store
-
-2. Abrir ventana de comandos (cmd) e instalar "pandas" y "openpyxl" con los comandos
-
-	2.1 pip install pandas
-
-	2.2 pip install openpyxl
-	
-
 # Instrucciones de uso
 
-- Ingresar los documentos a convertir en la carpeta inputs, ejecutar execute.bat y los resultados estarán en la carpeta outputs
+- Descargar el ejecutable de la carpeta dist, ejecutarlo para lanzar la GUI
 
 # Historial de versiones
 
 - v0.0
     - Funcionalidad de conversión básica
-
 - v0.1
     - Agregado gestión de carpetas
     - Agregado posibilidad de convertir archivos por separado o en lote
 - v0.2
     - Agregado intercambiar cutting length y cutting width cuando no coincide la veta (grain == N)
+- v1.0
+    - Agregado GUI con TKinter
+- v2.0
+    - Agregado proceso para Scheimberg
+    - Mejorada GUI con Tkinter bootstrap
+- v2.1.0
+    - Arreglado proceso de conversión de Scheimberg
