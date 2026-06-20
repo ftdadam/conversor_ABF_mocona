@@ -1,6 +1,6 @@
 # Instrucciones de uso
 
-- Descargar el ejecutable de la carpeta dist, ejecutarlo para lanzar la GUI
+- Descargar el [ejecutable](https://github.com/ftdadam/conversor_ABF_mocona/blob/main/dist/conversor_ABF.exe) de la carpeta dist, ejecutarlo para lanzar la GUI
 
 # Historial de versiones
 
