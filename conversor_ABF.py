@@ -134,7 +134,7 @@ def convertDfScheimberg(df_og):
     # df['_left_'] = df['_left_'].apply(lambda x: tipo_canto(x))
 
 
-    df['label'] = df[['_top_', '_right_', '_bot_', '_left_']].max(axis=1)
+    df['label_aux'] = df[['_top_', '_right_', '_bot_', '_left_']].max(axis=1)
 
     df[edge_cols] = df[edge_cols].map(
         lambda x: "" if pd.isna(x) else 1
@@ -144,7 +144,7 @@ def convertDfScheimberg(df_og):
     df_cantos = pd.read_excel(os.path.normpath(cantos_dir))
     canto_lookup = dict(zip(df_cantos['Canto_ID'], df_cantos['Canto_Nombre']))
 
-    df['label'] = df['label'].map(canto_lookup)
+    df['label'] = df['label'] + "_" + df['label_aux'].map(canto_lookup)
 
     # Rename & Reorder
     rename_dict = dict(zip(cols_to_keep, cols_new_names))
@@ -158,6 +158,10 @@ def convertDfScheimberg(df_og):
     
     # Insert column CANTIDAD (Value 1 in every row)
     df.insert(1,'CANTIDAD',value=[1]*len(df))
+    # Insert column CODIGO EXTERNO (Value 18 in every row)
+    df.insert(5,'CODIGO EXTERNO',value=[18]*len(df))
+    # Insert column ROTACION (Value "" in every row)
+    df.insert(6,'ROTACION',value=""*len(df))
 
     return df
 
