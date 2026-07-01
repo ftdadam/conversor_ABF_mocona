@@ -1,1 +1,1 @@
-pyinstaller conversor_ABF.py --onefile -w --icon=favicon_gc.ico
+pyinstaller conversor_ABF.py --onefile -w --icon=favicon_gc.ico --clean
